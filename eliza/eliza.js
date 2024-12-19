@@ -1,5 +1,5 @@
 const reflections = {
-    "I": "you",
+    "i": "you",
     "me": "you",
     "my": "your",
     "am": "are",
