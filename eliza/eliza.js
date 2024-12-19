@@ -98,6 +98,24 @@ function respond(userInput) {
     return "Please tell me more.";
 }
 
+
+
+function sendMessage(userInput) {
+    if (!userInput || userInput.trim() === '') {
+        return {
+            user: '',
+            eliza: 'Please say something.'
+        };
+    }
+    
+    const elizaResponse = respond(userInput);
+    
+    return {
+        user: userInput,
+        eliza: elizaResponse
+    };
+}
+
 // Test
-console.log(respond("hello"));
-console.log(respond("you remind me of my teacher"));
+console.log(sendMessage("hello"));
+console.log(sendMessage("you remind me of my teacher"));
