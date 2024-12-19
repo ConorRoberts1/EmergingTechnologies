@@ -68,3 +68,33 @@ const responses = {
 
 
 
+
+
+function respond(userInput) {
+    
+    function matchPattern(input, pattern) {
+        const regex = new RegExp(pattern, 'i');
+        return input.match(regex);
+    }
+    
+    
+    function getRandomResponse(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+   
+    for (let pattern in responses) {
+        const match = matchPattern(userInput, pattern);
+        if (match) {
+            let response = getRandomResponse(responses[pattern]);
+            return response;
+        }
+    }
+    
+   
+    return "Please tell me more.";
+}
+
+// Test
+console.log(respond("hello"));
+console.log(respond("I miss my mother"));
