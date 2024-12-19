@@ -87,6 +87,9 @@ function respond(userInput) {
         const match = matchPattern(userInput, pattern);
         if (match) {
             let response = getRandomResponse(responses[pattern]);
+            if (match.length > 1 && response.includes("{0}")) {
+                response = response.replace("{0}", reflect(match[1]));
+            }
             return response;
         }
     }
@@ -97,4 +100,4 @@ function respond(userInput) {
 
 // Test
 console.log(respond("hello"));
-console.log(respond("I miss my mother"));
+console.log(respond("you remind me of my teacher"));
