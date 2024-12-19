@@ -116,6 +116,22 @@ function sendMessage(userInput) {
     };
 }
 
-// Test
-console.log(sendMessage("hello"));
-console.log(sendMessage("you remind me of my teacher"));
+const userInputElement = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+
+sendButton.addEventListener('click', () => {
+    const userText = userInputElement.value.trim();
+    if (userText !== '') {
+        const responseObj = sendMessage(userText);
+        console.log(responseObj);
+        userInputElement.value = '';
+    }
+});
+
+userInputElement.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        sendButton.click();
+    }
+});
+
+
