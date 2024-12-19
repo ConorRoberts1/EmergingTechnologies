@@ -118,12 +118,13 @@ function sendMessage(userInput) {
 
 const userInputElement = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
+const conversationElement = document.getElementById('messages');
 
 sendButton.addEventListener('click', () => {
     const userText = userInputElement.value.trim();
     if (userText !== '') {
         const responseObj = sendMessage(userText);
-        console.log(responseObj);
+        displayConversation(responseObj);
         userInputElement.value = '';
     }
 });
@@ -134,4 +135,21 @@ userInputElement.addEventListener('keyup', (event) => {
     }
 });
 
+
+function displayConversation({ user, eliza }) {
+    if (user) {
+        const userMsg = document.createElement('div');
+        userMsg.classList.add('user-message');
+        userMsg.textContent = user;
+        conversationElement.appendChild(userMsg);
+    }
+    
+    const elizaMsg = document.createElement('div');
+    elizaMsg.classList.add('eliza-message');
+    elizaMsg.textContent = eliza;
+    conversationElement.appendChild(elizaMsg);
+
+    // Scroll to the bottom of the conversation
+    conversationElement.scrollTop = conversationElement.scrollHeight;
+}
 
