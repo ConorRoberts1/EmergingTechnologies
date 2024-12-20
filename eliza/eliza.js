@@ -165,13 +165,13 @@ userInputElement.addEventListener('keyup', (event) => {
 function displayConversation({ user, eliza }) {
     if (user) {
         const userMsg = document.createElement('div');
-        userMsg.classList.add('user-message');
+        userMsg.classList.add('message', 'user-message');
         userMsg.textContent = user;
         conversationElement.appendChild(userMsg);
     }
     
     const elizaMsg = document.createElement('div');
-    elizaMsg.classList.add('eliza-message');
+    elizaMsg.classList.add('message', 'eliza-message');
     elizaMsg.textContent = eliza;
     conversationElement.appendChild(elizaMsg);
 
